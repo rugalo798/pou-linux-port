@@ -1,0 +1,26 @@
+package android.os;
+
+/** Binder interface. */
+public interface IBinder {
+    int FIRST_CALL_TRANSACTION = 0x00000001;
+    int LAST_CALL_TRANSACTION = 0x00ffffff;
+    int PING_TRANSACTION = ('_' << 24) | ('P' << 16) | ('N' << 8) | 'G';
+    int DUMP_TRANSACTION = ('_' << 24) | ('D' << 16) | ('M' << 8) | 'P';
+    int INTERFACE_TRANSACTION = ('_' << 24) | ('N' << 16) | ('T' << 8) | 'F';
+    int TWEET_TRANSACTION = ('_' << 24) | ('T' << 16) | ('W' << 8) | 'T';
+    int LIKE_TRANSACTION = ('_' << 24) | ('L' << 16) | ('I' << 8) | 'K';
+
+    String getInterfaceDescriptor() throws RemoteException;
+    boolean pingBinder();
+    boolean isBinderAlive();
+    Object queryLocalInterface(String descriptor);
+    void transact(int code, Parcel data, Parcel reply, int flags) throws RemoteException;
+    boolean linkToDeath(DeathRecipient recipient, int flags) throws RemoteException;
+    void unlinkToDeath(DeathRecipient recipient, int flags);
+    String getDebugName();
+    int getSuggestedMaxIpcSizeBytes();
+
+    interface DeathRecipient {
+        void binderDied();
+    }
+}

@@ -1,0 +1,23 @@
+# Original game data and assets are not redistributed.
+/game/
+/assets/
+/res/*.properties
+/res/resources_dump.txt
+/docs/*.png
+
+# Generated build output and local state.
+/patched/
+/shim/out/
+/shim/sources.txt
+/tools/out/
+/save/
+*.class
+*.log
+__pycache__/
+*.pyc
+
+# Editor/OS files.
+.DS_Store
+.idea/
+*.iml
+*.swp
